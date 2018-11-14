@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.getkeepsafe.dexcount'
+
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.sniper.social"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        versionCode rootProject.ext.versionCode as Integer
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner getInstrumentation()
+
+        resConfigs "en"
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+static def getInstrumentation() {
+    "android.support.test.runner.AndroidJUnitRunner"
+}
+
+dependencies {
+    implementation project(':home')
+    implementation project(':details')
+
+    commonAndroidTestDependencies(it)
+}

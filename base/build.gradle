@@ -1,0 +1,66 @@
+apply plugin: 'com.android.feature'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    baseFeature true
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        buildConfigField "String", "APP_LINK_BASE_URL", "\"$rootProject.appLinkFullBaseUrl\""
+        buildConfigField "String", "APP_LINK_HOME", "\"$rootProject.appLinkHomeScreen\""
+        buildConfigField "String", "APP_LINK_DETAILS", "\"$rootProject.appLinkDetailsScreen\""
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+configurations.all {
+    resolutionStrategy {
+        force rootProject.libraries.supportCardView
+        force rootProject.libraries.supportDesign
+        force rootProject.libraries.supportAppcompatV7
+        force rootProject.libraries.supportRecyclerView
+        force rootProject.libraries.supportConstrtaintLayout
+    }
+}
+
+dependencies {
+    api rootProject.libraries.supportRecyclerView
+    api rootProject.libraries.supportConstrtaintLayout
+    api rootProject.libraries.supportCardView
+    api rootProject.libraries.supportDesign
+    api rootProject.libraries.supportAppcompatV7
+    api rootProject.libraries.rxJava2
+    api rootProject.libraries.rxAndroid
+    api rootProject.libraries.dagger
+
+    annotationProcessor rootProject.libraries.daggerCompiler
+    annotationProcessor rootProject.libraries.javaxAnnotationProcessor
+
+    commonTestDependencies(it)
+
+    application project(':app')
+    api project(':api')
+
+    feature project(':home')
+    feature project(':details')
+}
+
+task preCommit(dependsOn: ['testDebugUnitTest', 'assembleDebugAndroidTest'])

@@ -1,0 +1,51 @@
+apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        manifestPlaceholders = [appLinkScheme : rootProject.appLinkScheme,
+                                appLinkHost   : rootProject.appLinkHost,
+                                appLinkDetails: rootProject.appLinkDetailsScreen]
+
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues true
+        }
+    }
+
+}
+
+dependencies {
+    api project(':base')
+
+    annotationProcessor rootProject.libraries.daggerCompiler
+    annotationProcessor rootProject.libraries.javaxAnnotationProcessor
+
+    commonTestDependencies(it)
+    commonAndroidTestDependencies(it)
+}
+
+task preCommit(dependsOn: ['testDebugUnitTest', 'assembleDebugAndroidTest'])
