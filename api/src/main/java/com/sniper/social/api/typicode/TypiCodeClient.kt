@@ -20,13 +20,6 @@ class TypiCodeClient(converterFactory: Converter.Factory,
             .validateEagerly(true)
             .build()
 
-    companion object {
-//        const val NAME = "TypiCodeClient"
-//        const val GSON_CONVERTER_FACTORY = "TypiCodeGSONConverterFactory"
-//        const val RX_CALL_ADAPTER_FACTORY = "TypiCodeCallAdapterFactory"
-//        const val API_CONFIGURATION = "TypiCodeApiConfiguration"
-    }
-
     override fun <T> api(service: Class<T>): T {
         return restAdapter.create(service)
     }

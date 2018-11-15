@@ -1,12 +1,15 @@
 package com.sniper.social.details
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import com.sniper.social.base.di.Scope
+import com.sniper.social.base.ui.BaseActivity
+import com.sniper.social.details.di.detailsModule
+import org.koin.dsl.module.Module
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
-    }
+    override fun getScreenLayout(): Int = R.layout.activity_details
+
+    override fun getModule(): Module = detailsModule
+
+    override fun getScreenScope(): String = Scope.DETAILS
 }
