@@ -13,7 +13,6 @@ android {
         manifestPlaceholders = [appLinkScheme : rootProject.appLinkScheme,
                                 appLinkHost   : rootProject.appLinkHost,
                                 appLinkDetails: rootProject.appLinkDetailsScreen]
-
     }
 
     buildTypes {
@@ -21,7 +20,7 @@ android {
             debuggable true
         }
         release {
-            minifyEnabled false
+            //
         }
     }
 
@@ -35,17 +34,14 @@ android {
             returnDefaultValues true
         }
     }
-
 }
 
 dependencies {
-    api project(':base')
-
-    annotationProcessor rootProject.libraries.daggerCompiler
-    annotationProcessor rootProject.libraries.javaxAnnotationProcessor
+    implementation project(':base')
+    implementation project(':api')
+    implementation project(':converter')
 
     commonTestDependencies(it)
-    commonAndroidTestDependencies(it)
 }
 
 task preCommit(dependsOn: ['testDebugUnitTest', 'assembleDebugAndroidTest'])

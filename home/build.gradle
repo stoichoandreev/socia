@@ -38,7 +38,9 @@ android {
 }
 
 dependencies {
-    api project(':base')
+    implementation project(':base')
+    implementation project(':api')
+    implementation project(':converter')
 
     commonTestDependencies(it)
 }

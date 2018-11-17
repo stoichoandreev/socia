@@ -1,0 +1,35 @@
+apply plugin: "kotlin"
+
+compileJava {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
+
+dependencies {
+
+    compile project(":api")
+
+    compile rootProject.libraries.kotlinStandards
+
+    commonTestDependencies(it)
+
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+task preCommit(dependsOn: test)

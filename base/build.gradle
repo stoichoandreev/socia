@@ -1,4 +1,6 @@
 apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -49,10 +51,9 @@ dependencies {
     api rootProject.libraries.supportAppcompatV7
     api rootProject.libraries.rxJava2
     api rootProject.libraries.rxAndroid
-    api rootProject.libraries.dagger
-
-    annotationProcessor rootProject.libraries.daggerCompiler
-    annotationProcessor rootProject.libraries.javaxAnnotationProcessor
+    api rootProject.libraries.koin
+    api rootProject.libraries.koinScope
+    api rootProject.libraries.koinExtensions
 
     commonTestDependencies(it)
 

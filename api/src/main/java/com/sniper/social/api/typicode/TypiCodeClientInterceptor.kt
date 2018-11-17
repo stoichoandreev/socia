@@ -11,4 +11,5 @@ class TypiCodeClientInterceptor : Interceptor {
         request = request.newBuilder().url(url).build()
         return chain.proceed(request)
     }
+
 }

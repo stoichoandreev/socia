@@ -9,8 +9,7 @@ ext {
     supportLibraryVersion = '27.1.1'
     constrtaintLayoutVersion = '1.1.3'
     javaRX2Version = '2.1.0'
-    daggerVersion = '2.10'
-    javaxAnnotationVersion = '1.2'
+    koin = '1.0.2'
 
     gsonVersion = '2.8.5'
     okhttpVersion = '3.11.0'
@@ -31,10 +30,9 @@ ext {
             supportConstrtaintLayout    : "com.android.support.constraint:constraint-layout:$constrtaintLayoutVersion",
             rxJava2                     : "io.reactivex.rxjava2:rxjava:$javaRX2Version",
             rxAndroid                   : "io.reactivex.rxjava2:rxandroid:$javaRX2Version",
-            dagger                      : "com.google.dagger:dagger:$daggerVersion",
-            daggerAnnotation            : 'javax.annotation:jsr250-api:1.0',
-            daggerCompiler              : "com.google.dagger:dagger-compiler:$daggerVersion",
-            javaxAnnotationProcessor    : "javax.annotation:javax.annotation-api:$javaxAnnotationVersion",
+            koin                        : "org.koin:koin-android:$koin",
+            koinScope                   : "org.koin:koin-android-scope:$koin",
+            koinExtensions              : "org.koin:koin-core-ext:$koin",
 
             gson                        : "com.google.code.gson:gson:$gsonVersion",
             okhttp                      : "com.squareup.okhttp3:okhttp:$okhttpVersion",

@@ -16,10 +16,10 @@ open class Post: Serializable {
 
     @SerializedName("title")
     @Expose
-    lateinit var title: String
+    lateinit var postTitle: String
 
     @SerializedName("body")
     @Expose
-    lateinit var body: String
+    lateinit var postBody: String
 
 }
