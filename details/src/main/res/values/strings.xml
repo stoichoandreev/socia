@@ -1,3 +1,8 @@
 <resources>
     <string name="details_title">Post Details</string>
+    <string name="posted_by_pattern">Posted by: %1$s</string>
+    <plurals name="comments_pattern">
+        <item quantity="one">%d Comment</item>
+        <item quantity="other">%d Comments</item>
+    </plurals>
 </resources>

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_margin"
+    android:transitionName="@string/home_screen_transition"
     tools:context=".ui.DetailsActivity">
 
     <ProgressBar
@@ -25,43 +26,38 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:lines="2"
+        android:lines="1"
         android:padding="5dp"
-        android:textStyle="italic"
-        android:textColor="@color/dark_grey"
+        android:gravity="end"
+        android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:text="User name"/>
+        tools:text="Posted by: User name"/>
 
     <TextView
         android:id="@+id/post_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:lines="2"
+        android:lines="1"
         android:padding="5dp"
-        android:textStyle="italic"
-        android:linksClickable="true"
-        android:autoLink="web"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/post_user"
         app:layout_constraintBottom_toTopOf="@id/post_body"
-        tools:text="Link"/>
+        tools:text="Title"/>
 
     <TextView
         android:id="@+id/post_body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:textStyle="italic"
-        android:linksClickable="true"
-        android:autoLink="web"
         android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/post_title"
-        tools:text="Some description"/>
+        tools:text="Post content"/>
 
     <TextView
         android:id="@+id/post_comments_number"
@@ -71,8 +67,9 @@
         android:lines="2"
         android:padding="5dp"
         android:textStyle="italic"
+        android:textSize="12sp"
         android:textColor="@color/dark_grey"
-        android:gravity="right"
+        android:gravity="end"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/post_body"

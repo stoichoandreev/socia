@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.sniper.social.base.adapter.OnItemClickListener
@@ -55,11 +56,13 @@ class HomeActivity : BaseActivity<HomePresenter>(), HomePresenter.View, OnItemCl
         progress_indicator.visibility = if (show) View.VISIBLE else View.GONE
     }
 
-    override fun onItemClick(selectedItem: PostViewModel) {
+    override fun onItemClick(view: View, selectedItem: PostViewModel) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(appLinksService.generateScreenLink(ScreenLink.DETAILS)))
         intent.putExtra(IntentExtra.POST_EXTRA, selectedItem)
         try {
-            startActivity(intent)
+            val transitionName = getString(R.string.home_screen_transition)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, view, transitionName)
+            startActivity(intent, options.toBundle())
         } catch (e: ActivityNotFoundException) {
             showError("If you use Instant version of the app please install the full version")
         }

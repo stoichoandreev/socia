@@ -7,14 +7,6 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.HomeActivity">
 
-    <ProgressBar
-        android:id="@+id/progress_indicator"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:visibility="gone"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/posts_recycler_view"
         android:layout_width="match_parent"
@@ -23,5 +15,13 @@
         tools:itemCount="20"
         tools:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:listitem="@layout/item_post_view"/>
+
+    <ProgressBar
+        android:id="@+id/progress_indicator"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"/>
 
 </android.support.design.widget.CoordinatorLayout>

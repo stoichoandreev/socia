@@ -7,4 +7,6 @@ interface CommentsService {
 
     fun getComments(): Observable<List<CommentViewModel>>
 
+    fun getPostComments(postId:Int?): Observable<List<CommentViewModel>>
+
 }

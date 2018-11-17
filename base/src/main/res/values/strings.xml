@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Base</string>
+
+    <string name="home_screen_transition">home_to_details</string>
 </resources>
