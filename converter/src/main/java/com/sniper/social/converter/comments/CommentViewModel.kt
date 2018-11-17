@@ -1,6 +1,10 @@
 package com.sniper.social.converter.comments
 
-data class CommentViewModel(val postId: Int, val body: String)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class CommentViewModel(val postId: Int, val body: String): Parcelable
 
 class CommentViewModelBuilder {
     var postId = -1

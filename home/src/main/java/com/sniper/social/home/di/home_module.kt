@@ -10,14 +10,9 @@ import com.sniper.social.home.mvp.HomePresenter
 import com.sniper.social.home.services.DefaultPostsService
 import com.sniper.social.home.services.PostsService
 import com.sniper.social.home.usecases.GetPostsUseCase
-import io.reactivex.disposables.CompositeDisposable
 import org.koin.dsl.module.module
 
 val homeModule = module {
-
-    scope(Scope.HOME, override = true) {
-        CompositeDisposable()
-    }
 
     scope(Scope.HOME, override = true) {
         val client = get(Dependency.TYPI_CODE_API_RETROFIT_CLIENT) as RetrofitClient

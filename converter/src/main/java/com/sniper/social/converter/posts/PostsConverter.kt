@@ -9,6 +9,7 @@ class PostsConverter : BaseConverter<List<Post>, List<PostViewModel>> {
             response.map {
                 createPostViewModel {
                     id = it.id!!
+                    userId = it.userId!!
                     title = it.postTitle
                     body = it.postBody
                 }

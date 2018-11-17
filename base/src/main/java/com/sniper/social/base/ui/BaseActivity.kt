@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.sniper.social.base.mvp.Presenter
@@ -28,6 +29,13 @@ abstract class BaseActivity<P : Presenter> : AppCompatActivity() {
 
         loadKoinModules(screenModule)
         bindScope(getOrCreateScope(screenScope))
+    }
+
+    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
+        when(menuItem.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(menuItem)
     }
 
     override fun onStop() {

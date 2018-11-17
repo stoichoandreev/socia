@@ -21,7 +21,8 @@ dependencies {
     compile rootProject.libraries.okhttpLoggingInterceptor
     compile rootProject.libraries.kotlinStandards
 
-    commonTestDependencies(it)
+    testCompile librariesTest.JUnit
+    testCompile librariesTest.assertJCore
 
 }
 
