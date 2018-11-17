@@ -13,11 +13,11 @@ class HomeActivity : BaseActivity<HomePresenter>(), HomePresenter.View {
 
     override val presenter: HomePresenter by inject()
 
-    override fun getScreenLayout(): Int = R.layout.activity_home
+    override val screenLayout: Int = R.layout.activity_home
 
-    override fun getModule(): Module = homeModule
+    override val screenModule: Module = homeModule
 
-    override fun getScreenScope(): String = Scope.HOME
+    override val screenScope: String = Scope.HOME
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

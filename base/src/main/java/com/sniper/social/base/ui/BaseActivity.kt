@@ -17,24 +17,23 @@ abstract class BaseActivity<P : Presenter> : AppCompatActivity() {
 
     abstract val presenter: P
 
-    abstract fun getScreenScope(): String
-    abstract fun getScreenLayout(): Int
-    abstract fun getModule(): Module
+    abstract val screenScope: String
+    abstract val screenLayout: Int
+    abstract val screenModule: Module
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getScreenLayout())
+        setContentView(screenLayout)
 
-        loadKoinModules(getModule())
-
-        bindScope(getOrCreateScope(getScreenScope()))
+        loadKoinModules(screenModule)
+        bindScope(getOrCreateScope(screenScope))
     }
 
     override fun onStop() {
         super.onStop()
         if (isFinishing) {
-            getKoin().getScope(getScreenScope()).close()
+            getKoin().getScope(screenScope).close()
             presenter.destroy()
         }
     }

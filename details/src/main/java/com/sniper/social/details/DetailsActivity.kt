@@ -12,11 +12,11 @@ class DetailsActivity : BaseActivity<DetailsPresenter>(), DetailsPresenter.View 
 
     override val presenter: DetailsPresenter by inject()
 
-    override fun getScreenLayout(): Int = R.layout.activity_details
+    override val screenLayout: Int = R.layout.activity_details
 
-    override fun getModule(): Module = detailsModule
+    override val screenModule: Module = detailsModule
 
-    override fun getScreenScope(): String = Scope.DETAILS
+    override val screenScope: String = Scope.DETAILS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
