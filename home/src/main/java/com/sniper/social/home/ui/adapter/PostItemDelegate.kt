@@ -24,7 +24,7 @@ class PostItemDelegate : BaseAdapterDelegate<PostViewModel, PostItemDelegate.Pos
                                 position: Int,
                                 listener: OnItemClickListener<PostViewModel>) {
 
-        holder.parent.setOnClickListener{ listener.onItemClick(model)}
+        holder.parent.setOnClickListener{ listener.onItemClick(holder.parent, model)}
         holder.title.text = model.title
         holder.additionalInformation.text = model.body
 

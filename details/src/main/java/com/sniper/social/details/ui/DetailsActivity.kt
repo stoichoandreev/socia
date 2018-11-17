@@ -5,6 +5,7 @@ import android.view.View
 import com.sniper.social.base.di.Scope
 import com.sniper.social.base.intents.IntentExtra
 import com.sniper.social.base.ui.BaseActivity
+import com.sniper.social.converter.details.DetailsViewModel
 import com.sniper.social.converter.posts.PostViewModel
 import com.sniper.social.details.R
 import com.sniper.social.details.di.detailsModule
@@ -27,12 +28,18 @@ class DetailsActivity : BaseActivity<DetailsPresenter>(), DetailsPresenter.View 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         obtainExtras(intent.extras)
 
         initToolbar()
         presenter.attachView(this)
-        presenter.method()
+        presenter.fetchPostDetails(postData)
+    }
+
+    override fun showDetails(details: DetailsViewModel) {
+        post_user.text = String.format(getString(R.string.posted_by_pattern), details.userName)
+        post_title.text = details.postTitle
+        post_body.text = details.postBody
+        post_comments_number.text = resources.getQuantityString(R.plurals.comments_pattern, details.commentsCount, details.commentsCount)
     }
 
     override fun showError(errorMessage: String) {

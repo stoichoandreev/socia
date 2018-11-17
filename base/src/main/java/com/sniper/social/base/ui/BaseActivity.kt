@@ -33,7 +33,10 @@ abstract class BaseActivity<P : Presenter> : AppCompatActivity() {
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
         when(menuItem.itemId) {
-            android.R.id.home -> finish()
+            android.R.id.home -> {
+                supportFinishAfterTransition()
+                finish()
+            }
         }
         return super.onOptionsItemSelected(menuItem)
     }

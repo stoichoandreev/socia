@@ -10,7 +10,11 @@ class DefaultHomePresenter(private val getPosts: GetPostsUseCase,
     private var view: HomePresenter.View? = null
 
     override fun fetchPosts() {
-        disposable.add(getPosts.getAllPosts().subscribe({ posts ->
+        disposable.add(getPosts.getAllPosts()
+                .doOnSubscribe { view?.showLoading(true) }
+                .doOnComplete { view?.showLoading(false) }
+                .doOnTerminate { view?.showLoading(false) }
+                .subscribe({ posts ->
             view?.showPosts(posts)
         }, { error ->
             view?.showError(error.localizedMessage)

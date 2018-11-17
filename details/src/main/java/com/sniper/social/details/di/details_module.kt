@@ -11,6 +11,11 @@ import com.sniper.social.converter.posts.PostsConverter
 import com.sniper.social.converter.users.UsersConverter
 import com.sniper.social.details.mvp.DefaultDetailsPresenter
 import com.sniper.social.details.mvp.DetailsPresenter
+import com.sniper.social.details.services.CommentsService
+import com.sniper.social.details.services.DefaultCommentsService
+import com.sniper.social.details.services.DefaultUsersService
+import com.sniper.social.details.services.UsersService
+import com.sniper.social.details.usecases.GetPostDetailsUseCase
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.dsl.module.module
 
@@ -35,7 +40,19 @@ val detailsModule = module {
     }
 
     scope(Scope.DETAILS, override = true) {
-        DefaultDetailsPresenter(get()) as DetailsPresenter
+        DefaultUsersService(get(), get()) as UsersService
+    }
+
+    scope(Scope.DETAILS, override = true) {
+        DefaultCommentsService(get(), get()) as CommentsService
+    }
+
+    scope(Scope.DETAILS, override = true) {
+        GetPostDetailsUseCase(get(), get(), get(Dependency.MAIN_THREAD), get(Dependency.BACKGROUND_THREAD))
+    }
+
+    scope(Scope.DETAILS, override = true) {
+        DefaultDetailsPresenter(get(), get()) as DetailsPresenter
     }
 
 }

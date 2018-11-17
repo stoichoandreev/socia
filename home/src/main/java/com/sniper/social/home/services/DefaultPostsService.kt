@@ -7,13 +7,8 @@ import io.reactivex.Observable
 import io.reactivex.Scheduler
 
 class DefaultPostsService(private val api: PostsApi,
-                          private val converter: PostsConverter,
-                          private val notifications: Scheduler,
-                          private val worker: Scheduler): PostsService {
+                          private val converter: PostsConverter): PostsService {
 
     override fun getPosts(): Observable<List<PostViewModel>> =
-            api.posts()
-                    .map { response -> converter.map(response) }
-                    .subscribeOn(worker)
-                    .observeOn(notifications)
+            api.posts().map { response -> converter.map(response) }
 }

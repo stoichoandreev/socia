@@ -7,4 +7,6 @@ interface UsersService {
 
     fun getUsers(): Observable<List<UserViewModel>>
 
+    fun getUser(userId:Int?): Observable<UserViewModel>
+
 }

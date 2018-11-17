@@ -24,11 +24,11 @@ val homeModule = module {
     }
 
     scope(Scope.HOME, override = true) {
-        DefaultPostsService(get(), get(), get(Dependency.MAIN_THREAD), get(Dependency.BACKGROUND_THREAD)) as PostsService
+        DefaultPostsService(get(), get()) as PostsService
     }
 
     scope(Scope.HOME, override = true) {
-        GetPostsUseCase(get())
+        GetPostsUseCase(get(),get(Dependency.MAIN_THREAD), get(Dependency.BACKGROUND_THREAD))
     }
 
     scope(Scope.HOME, override = true) {
