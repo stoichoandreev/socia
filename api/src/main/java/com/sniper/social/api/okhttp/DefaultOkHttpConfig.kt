@@ -13,8 +13,8 @@ class DefaultOkHttpConfig : OKHttpConfig {
 
     companion object {
 
-        private const val CONNECTION_TIMEOUT: Long = 30
-        private const val READ_TIMEOUT: Long = 30
-        private const val WRITE_TIMEOUT: Long = 30
+        const val CONNECTION_TIMEOUT: Long = 30
+        const val READ_TIMEOUT: Long = 30
+        const val WRITE_TIMEOUT: Long = 30
     }
 }

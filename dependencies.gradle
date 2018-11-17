@@ -16,6 +16,8 @@ ext {
     retrofitVersion = '2.4.0'
 
     jUnitVersion = '4.12'
+    mockitoVersion = '2.22.0'
+    powerMockVersion = '2.0.0-beta.5'
     jUnitRunnerVersion = '1.0.2'
     espressoVersion = '3.0.2'
     assertJVersion = '3.6.2'
@@ -53,6 +55,11 @@ ext {
             kotlinJUnitRunner      : "de.jodamob.kotlin:kotlin-runner-junit4:$kotlinJunitRunnerVersion",
             kotlinMockitoInline    : "org.mockito:mockito-inline:$kotlinMockitCoreVersion",
 
+            mockitoCore             : "org.mockito:mockito-core:$mockitoVersion",
+            powerMockCore           : "org.powermock:powermock-core:$powerMockVersion",
+            powerMockMockito        : "org.powermock:powermock-api-mockito2:$powerMockVersion",
+            powerMockModuleJunit4   : "org.powermock:powermock-module-junit4:$powerMockVersion",
+
             supportEspressoContrib  : "com.android.support.test.espresso:espresso-contrib:${espressoVersion}",
             supportEspressoCore     : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
             supportEspressoIntents  : "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
@@ -67,6 +74,10 @@ ext.commonTestDependencies = { dependencies ->
     dependencies.testImplementation librariesTest.kotlinJunitAssertions
     dependencies.testImplementation librariesTest.kotlinJUnitRunner
     dependencies.testImplementation librariesTest.kotlinMockitoInline
+    dependencies.testImplementation librariesTest.mockitoCore
+    dependencies.testImplementation librariesTest.powerMockCore
+    dependencies.testImplementation librariesTest.powerMockMockito
+    dependencies.testImplementation librariesTest.powerMockModuleJunit4
 }
 
 ext.commonAndroidTestDependencies = { dependencies ->

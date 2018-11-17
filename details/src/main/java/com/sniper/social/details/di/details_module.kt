@@ -17,15 +17,11 @@ import org.koin.dsl.module.module
 val detailsModule = module {
 
     scope(Scope.DETAILS, override = true) {
-        CompositeDisposable()
-    }
-
-    scope(Scope.DETAILS) {
         val client = get(Dependency.TYPI_CODE_API_RETROFIT_CLIENT) as RetrofitClient
         client.api(UsersApi::class.java)
     }
 
-    scope(Scope.DETAILS) {
+    scope(Scope.DETAILS, override = true) {
         val client = get(Dependency.TYPI_CODE_API_RETROFIT_CLIENT) as RetrofitClient
         client.api(CommentsApi::class.java)
     }
@@ -38,7 +34,7 @@ val detailsModule = module {
         CommentsConverter()
     }
 
-    scope(Scope.DETAILS) {
+    scope(Scope.DETAILS, override = true) {
         DefaultDetailsPresenter(get()) as DetailsPresenter
     }
 
