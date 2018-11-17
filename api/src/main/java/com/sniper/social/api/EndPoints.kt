@@ -2,8 +2,8 @@ package com.sniper.social.api
 
 object EndPoints {
 
-    const val Posts: String = "posts"
-    const val Users: String = "users"
-    const val Comments: String = "comments"
+    const val POSTS: String = "posts"
+    const val USERS: String = "users"
+    const val COMMENTS: String = "comments"
 
 }

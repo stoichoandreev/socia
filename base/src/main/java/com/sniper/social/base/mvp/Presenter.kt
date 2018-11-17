@@ -1,10 +1,8 @@
 package com.sniper.social.base.mvp
 
-interface Presenter<in V : PresenterView> {
+interface Presenter {
 
-    fun attachView(view: V)
-
-    fun detachView()
+    fun attachView(view: PresenterView)
 
     fun destroy()
 

@@ -1,20 +1,28 @@
 package com.sniper.social.home.mvp
 
-class DefaultHomePresenter: HomePresenter<HomePresenter.View> {
+import com.sniper.social.base.mvp.PresenterView
+import com.sniper.social.home.usecases.GetPostsUseCase
+import io.reactivex.disposables.CompositeDisposable
 
-    override fun method() {
+class DefaultHomePresenter(private val getPosts: GetPostsUseCase,
+                           private val disposable: CompositeDisposable) : HomePresenter {
 
+    private var view: HomePresenter.View? = null
+
+    override fun fetchPosts() {
+        disposable.add(getPosts.getAllPosts().subscribe({ posts ->
+            view?.showPosts(posts)
+        }, { error ->
+            view?.showError(error.localizedMessage)
+        }))
     }
 
-    override fun attachView(view: HomePresenter.View) {
-
-    }
-
-    override fun detachView() {
-
+    override fun attachView(view: PresenterView) {
+        this.view = view as HomePresenter.View
     }
 
     override fun destroy() {
-
+        this.view = null
+        disposable.dispose()
     }
 }

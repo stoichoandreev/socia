@@ -11,6 +11,7 @@ import com.sniper.social.api.typicode.TypiCodeClient
 import com.sniper.social.api.typicode.TypiCodeClientInterceptor
 import com.sniper.social.base.BuildConfig
 import com.sniper.social.base.di.Dependency
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Interceptor
@@ -88,7 +89,7 @@ val networkModule = module {
     }
 
     single(Dependency.MAIN_THREAD) {
-        AndroidSchedulers.mainThread();
+        AndroidSchedulers.mainThread() as Scheduler
     }
 
 }
