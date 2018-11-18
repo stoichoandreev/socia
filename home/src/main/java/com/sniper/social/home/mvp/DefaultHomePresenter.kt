@@ -12,7 +12,6 @@ class DefaultHomePresenter(private val getPosts: GetPostsUseCase,
     override fun fetchPosts() {
         disposable.add(getPosts.getAllPosts()
                 .doOnSubscribe { view?.showLoading(true) }
-                .doOnComplete { view?.showLoading(false) }
                 .doOnTerminate { view?.showLoading(false) }
                 .subscribe({ posts ->
             view?.showPosts(posts)
