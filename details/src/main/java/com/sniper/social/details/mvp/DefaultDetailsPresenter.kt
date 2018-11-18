@@ -6,14 +6,13 @@ import com.sniper.social.details.usecases.GetPostDetailsUseCase
 import io.reactivex.disposables.CompositeDisposable
 
 class DefaultDetailsPresenter(private val getPostDetails: GetPostDetailsUseCase,
-                              private val disposable: CompositeDisposable): DetailsPresenter {
+                              private val disposable: CompositeDisposable) : DetailsPresenter {
 
     private var view: DetailsPresenter.View? = null
 
     override fun fetchPostDetails(post: PostViewModel?) {
         disposable.add(getPostDetails.getDetailsInformation(post)
                 .doOnSubscribe { view?.showLoading(true) }
-                .doOnComplete { view?.showLoading(false) }
                 .doOnTerminate { view?.showLoading(false) }
                 .subscribe({ details ->
                     view?.showDetails(details)
